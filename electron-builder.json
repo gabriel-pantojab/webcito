@@ -1,0 +1,15 @@
+{
+  "appId": "com.gabther.webcito",
+  "files": ["dist-electron", "dist-angular"],
+  "icon": "./webcito.png",
+  "mac": {
+    "target": "dmg"
+  },
+  "linux": {
+    "target": "AppImage",
+    "category": "Utility"
+  },
+  "win": {
+    "target": ["portable", "msi"]
+  }
+}

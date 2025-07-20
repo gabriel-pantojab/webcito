@@ -1,18 +1,23 @@
 const { app, BrowserWindow } = require('electron/main')
 const path = require('node:path')
 
-const indexPath: string = '/dist-angular/browser/index.html';
+const DEV_ENV: string = "development";
+const INDEX_PATH: string = '/dist-angular/browser/index.html';
+const FILE_URL = "http://localhost:4200";
+const WIDTH: number = 800;
+const HEIGHT: number = 600;
 
 function createWindow (): void {
   const browser = new BrowserWindow({
-    width: 800,
-    height: 600,
-    /*webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }*/
+    width: WIDTH,
+    height: HEIGHT,
   })
 
-  browser.loadFile(path.join(app.getAppPath(), indexPath)).then();
+  if(process.env.NODE_ENV === DEV_ENV) {
+    browser.loadURL(FILE_URL).then()
+  }else {
+    browser.loadFile(path.join(app.getAppPath(), INDEX_PATH)).then();
+  }
 }
 
 app.whenReady().then(() => {
