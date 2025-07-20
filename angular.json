@@ -11,13 +11,14 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
+      "sourceRoot": "src/angular",
+      "prefix": "gabther",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "src/main.ts",
+            "baseHref": "./",
+            "browser": "src/angular/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -27,11 +28,12 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/angular/styles.scss"
             ]
           },
           "configurations": {
             "production": {
+              "baseHref": "./",
               "budgets": [
                 {
                   "type": "initial",
@@ -44,12 +46,15 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "outputPath": "dist-angular"
             },
             "development": {
+              "baseHref": "./",
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "outputPath": "dist-angular"
             }
           },
           "defaultConfiguration": "production"
@@ -81,11 +86,14 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/angular/styles.scss"
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
