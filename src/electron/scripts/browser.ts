@@ -22,7 +22,7 @@ export async function fillFormInput(pageId: string, selector: string, value: str
 
   const locator: Locator = page.locator(selector);
 
-  if (await locator.count() === 0) {
+  if (!(await locator.count())) {
     throw new Error(`Element not found: ${selector}`);
   }
 
