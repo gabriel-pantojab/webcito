@@ -2,8 +2,10 @@ import {chromium, Locator, Page} from 'playwright';
 
 const PAGES: Map<string, Page> = new Map();
 
-export function deletePage(pageId: string): void {
-  if(!PAGES.has(pageId)) throw Error(`Page ${pageId} doesn't exist`);
+export async function closePage(pageId: string): Promise<void> {
+  const page: Page | undefined = PAGES.get(pageId);
+  if(!page) throw Error(`Page ${pageId} doesn't exist`);
+  await page.close();
   PAGES.delete(pageId);
 }
 
@@ -14,7 +16,7 @@ export async function openPage(pageId: string, url: string): Promise<void> {
   await page.goto(url);
 }
 
-export async function fillFormInput(pageId: string, selector: string, value: string | number): Promise<void> {
+export async function setValue(pageId: string, selector: string, value: string | number): Promise<void> {
   const page: Page | undefined = PAGES.get(pageId);
   if(!page) {
     throw new Error(`Page ${pageId} not found`);
@@ -40,7 +42,7 @@ export async function fillFormInput(pageId: string, selector: string, value: str
   }
 }
 
-export async function click(pageId: string, selector: string): Promise<void> {
+export async function clickElement(pageId: string, selector: string): Promise<void> {
   const page: Page | undefined = PAGES.get(pageId);
   if(!page) {
     throw new Error(`Page ${pageId} not found`);

@@ -1,6 +1,6 @@
 import { app, BrowserWindow} from 'electron';
 import path from 'node:path';
-import {configEvents} from './scripts/config-events';
+import {configBrowserActions} from './config/config-browser-actions';
 
 const DEV_ENV: string = "development";
 const INDEX_PATH: string = '/dist-angular/browser/index.html';
@@ -13,7 +13,7 @@ function createWindow (): void {
     width: WIDTH,
     height: HEIGHT,
     webPreferences: {
-      preload: path.join(__dirname, 'config.js')
+      preload: path.join(__dirname, 'preload.js')
     },
   })
 
@@ -29,15 +29,15 @@ app.whenReady().then(() => {
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+      createWindow();
     }
   })
 });
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
 });
 
-configEvents();
+configBrowserActions();

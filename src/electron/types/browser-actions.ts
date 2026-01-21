@@ -1,0 +1,6 @@
+export enum BrowserActions {
+  OPEN_PAGE = "OPEN_PAGE",
+  CLOSE_PAGE = "CLOSE_PAGE",
+  SET_VALUE = "SET_VALUE",
+  CLICK_ELEMENT = "CLICK_ELEMENT",
+}
