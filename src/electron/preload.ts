@@ -12,7 +12,7 @@ function preload(): void {
     browser: {
       openPage: (pageId: string, url: string) => ipcRenderer.invoke(BrowserActions.OPEN_PAGE, pageId, url),
       closePage: (pageId: string) => ipcRenderer.invoke(BrowserActions.CLOSE_PAGE, pageId),
-      setValue: (pageId: string, selector: string, value: string | number) => ipcRenderer.invoke(BrowserActions.SET_VALUE, pageId, selector, value),
+      setValue: (pageId: string, selector: string, value: string) => ipcRenderer.invoke(BrowserActions.SET_VALUE, pageId, selector, value),
       clickElement: (pageId: string, selector: string) => ipcRenderer.invoke(BrowserActions.CLICK_ELEMENT, pageId, selector)
     }
   });
