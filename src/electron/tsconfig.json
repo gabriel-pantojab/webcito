@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "moduleResolution": "NodeNext",
     "types": ["node"],
-    "lib": ["ESNext"]
+    "lib": ["ESNext", "dom"]
   },
   "include": ["./**/*"],
   "exclude": ["node_modules"]

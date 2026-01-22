@@ -7,7 +7,11 @@ const importPlugin = require("eslint-plugin-import");
 
 module.exports = defineConfig([
   {
+    ignores: ["vite.electron.config.ts"],
+  },
+  {
     files: ["**/*.ts"],
+    extends: [...tseslint.configs.recommended],
     rules: {
       "@typescript-eslint/no-inferrable-types": "off",
       "@typescript-eslint/explicit-function-return-type": "error",
