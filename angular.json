@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -19,7 +19,7 @@
           "options": {
             "baseHref": "./",
             "browser": "src/angular/main.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "src/angular/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
@@ -77,7 +77,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "src/angular/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
@@ -89,11 +89,23 @@
               "src/angular/styles.scss"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "**/*.ts",
+              "**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
