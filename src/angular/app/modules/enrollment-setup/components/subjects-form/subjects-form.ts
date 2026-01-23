@@ -34,22 +34,30 @@ export class SubjectsForm {
     if (this.#alreadySubjectExist(subject.code)) return;
     this.subjects.update((prev) => {
       const subjects: Subject[] = [...prev, subject];
-      const subjectsForm: FormArray = this.form().get('subjects') as FormArray;
-      subjectsForm.clear();
-      subjects.forEach((subject: Subject) => {
-        subjectsForm.push(this.#formBuilder.control(subject));
-      });
+      this.#updateForm(subjects);
       return subjects;
     });
   }
 
   public removeSubject(code: string): void {
-    this.subjects.update((prev) =>
-      prev.filter((subject) => subject.code !== code),
-    );
+    this.subjects.update((prev) => {
+      const subjects: Subject[] = prev.filter(
+        (subject) => subject.code !== code,
+      );
+      this.#updateForm(subjects);
+      return subjects;
+    });
   }
 
   #alreadySubjectExist(code: string): boolean {
-    return !!this.subjects().find((subject) => subject.code === code);
+    return this.subjects().some((subject) => subject.code === code);
+  }
+
+  #updateForm(subjects: Subject[]): void {
+    const subjectsForm: FormArray = this.form().get('subjects') as FormArray;
+    subjectsForm.clear();
+    subjects.forEach((subject: Subject) => {
+      subjectsForm.push(this.#formBuilder.control(subject));
+    });
   }
 }

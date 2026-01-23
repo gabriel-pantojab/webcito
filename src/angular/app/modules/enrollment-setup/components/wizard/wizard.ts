@@ -83,7 +83,7 @@ export class Wizard {
   }
 
   public previousStep(): void {
-    if (this.currentStep() === 0) return;
+    if (this.currentStep() === 1) return;
     this.currentStep.update((prev) => prev - 1);
   }
 
