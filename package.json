@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:angular dev:electron",
     "dev:angular": "ng serve",
-    "dev:electron": "npm run dev:transpile:electron && cross-env NODE_ENV=development electron .",
+    "dev:electron": "wait-on http://localhost:4200 && npm run dev:transpile:electron && cross-env NODE_ENV=development electron .",
     "dev:transpile:electron": "vite build --mode development --config vite.electron.config.ts",
     "prod:transpile:electron": "vite build --mode production --config vite.electron.config.ts",
     "build:angular": "ng build",
@@ -67,6 +67,7 @@
     "prettier-eslint": "^16.4.2",
     "typescript": "5.8.2",
     "typescript-eslint": "8.46.4",
-    "vite": "7.3.1"
+    "vite": "7.3.1",
+    "wait-on": "9.0.3"
   }
 }
