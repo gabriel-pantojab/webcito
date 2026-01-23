@@ -11,31 +11,31 @@ import {
 import { FormGroup } from '@angular/forms';
 
 import { CodesFormBuilder } from '../../use-cases/codes-form-builder';
+import { CoursesFormBuilder } from '../../use-cases/courses-form-builder';
 import { EnrollmentSetupFormBuilder } from '../../use-cases/enrollment-setup-form-builder';
-import { SubjectsFormBuilder } from '../../use-cases/subjects-form-builder';
 import { UserInfoFormBuilder } from '../../use-cases/user-info-form-builder';
 
-import { EnrollmentSetup, UserInfoStep } from '../../types/enrollment-setup';
+import { EnrollmentStep, UserInfoStep } from '../../types/enrollment-step';
 import { EnrollmentStepType } from '../../types/enums/enrollment-step-type';
 
 import { CodesForm } from '../codes-form/codes-form';
-import { SubjectsForm } from '../subjects-form/subjects-form';
+import { CoursesForm } from '../courses-form/courses-form';
 import { UserInfoForm } from '../user-info-form/user-info-form';
 
 @Component({
   selector: 'wizard',
-  imports: [UserInfoForm, CodesForm, SubjectsForm],
+  imports: [UserInfoForm, CodesForm, CoursesForm],
   providers: [
     EnrollmentSetupFormBuilder,
     UserInfoFormBuilder,
     CodesFormBuilder,
-    SubjectsFormBuilder,
+    CoursesFormBuilder,
   ],
   templateUrl: './wizard.html',
   styleUrl: './wizard.scss',
 })
 export class Wizard {
-  public eventSubmitStepData: OutputEmitterRef<EnrollmentSetup> = output();
+  public eventSubmitStepData: OutputEmitterRef<EnrollmentStep> = output();
 
   protected currentStep: WritableSignal<number> = signal(1);
   protected form: Signal<FormGroup> = computed((): FormGroup => {
@@ -43,12 +43,12 @@ export class Wizard {
       return this.#formBuilder.invoke(EnrollmentStepType.USER_INFO);
     if (this.currentStep() === this.CODES_STEP)
       return this.#formBuilder.invoke(EnrollmentStepType.CODES);
-    return this.#formBuilder.invoke(EnrollmentStepType.SUBJECTS);
+    return this.#formBuilder.invoke(EnrollmentStepType.COURSES);
   });
 
   protected readonly USER_INFO_STEP: number = 1;
   protected readonly CODES_STEP: number = 2;
-  protected readonly SUBJECTS_STEP: number = 3;
+  protected readonly COURSE_STEP: number = 3;
   protected readonly TOTAL_STEPS: number = 3;
 
   #formBuilder: EnrollmentSetupFormBuilder = inject(EnrollmentSetupFormBuilder);
@@ -71,8 +71,8 @@ export class Wizard {
     }
 
     this.eventSubmitStepData.emit({
-      type: EnrollmentStepType.SUBJECTS,
-      subjects: Object.values(this.form().value),
+      type: EnrollmentStepType.COURSES,
+      courses: Object.values(this.form().value),
     });
   }
 

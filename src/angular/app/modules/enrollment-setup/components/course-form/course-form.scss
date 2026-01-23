@@ -1,4 +1,4 @@
-.subject-form {
+.course-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -7,19 +7,19 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.subject-form__content {
+.course-form__content {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.subject-form__left-content {
+.course-form__left-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.subject-form__field {
+.course-form__field {
   border-radius: .5rem;
   padding: .3rem;
 
@@ -33,7 +33,7 @@
   }
 }
 
-.subject-form__actions {
+.course-form__actions {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;

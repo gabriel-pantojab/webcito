@@ -6,16 +6,16 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { Subject } from '@core/types/domain/subject';
+import { Course } from '@core/models/course';
 
 @Component({
-  selector: 'subject-form',
+  selector: 'course-form',
   imports: [ReactiveFormsModule],
-  templateUrl: './subject-form.html',
-  styleUrl: './subject-form.scss',
+  templateUrl: './course-form.html',
+  styleUrl: './course-form.scss',
 })
-export class SubjectForm {
-  public eventAddSubject: OutputEmitterRef<Subject> = output();
+export class CourseForm {
+  public eventAddCourse: OutputEmitterRef<Course> = output();
   public eventCancel: OutputEmitterRef<void> = output();
 
   protected form: FormGroup;
@@ -24,9 +24,9 @@ export class SubjectForm {
     this.form = this.#buildForm();
   }
 
-  public handleAddSubject(): void {
+  public handleAddCourse(): void {
     if (this.form.invalid) return;
-    this.eventAddSubject.emit(this.form.value);
+    this.eventAddCourse.emit(this.form.value);
     this.form.reset();
   }
 

@@ -1,14 +1,14 @@
-<form class="subject-form" [formGroup]="form">
-  <section class="subject-form__content">
-    <div class="subject-form__left-content">
-      <fieldset class="subject-form__field">
+<form class="course-form" [formGroup]="form">
+  <section class="course-form__content">
+    <div class="course-form__left-content">
+      <fieldset class="course-form__field">
         <legend>
           <label for="">Codigo de la Materia</label>
         </legend>
         <input type="text" formControlName="code">
       </fieldset>
 
-      <fieldset class="subject-form__field">
+      <fieldset class="course-form__field">
         <legend>
           <label for="">Modalidad</label>
         </legend>
@@ -17,7 +17,7 @@
       </fieldset>
     </div>
 
-    <fieldset class="subject-form__field">
+    <fieldset class="course-form__field">
       <legend>
         <label for="">Grupo</label>
       </legend>
@@ -25,8 +25,8 @@
     </fieldset>
   </section>
 
-  <div class="subject-form__actions">
-    <button [disabled]="form.invalid" (click)="handleAddSubject()">
+  <div class="course-form__actions">
+    <button [disabled]="form.invalid" (click)="handleAddCourse()">
       agregar
     </button>
 
