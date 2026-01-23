@@ -3,8 +3,8 @@ import { computed, Signal, signal, WritableSignal } from '@angular/core';
 export abstract class State<T> {
   readonly #state: WritableSignal<T>;
 
-  protected constructor() {
-    this.#state = signal({} as T);
+  protected constructor(initialState: T) {
+    this.#state = signal(initialState);
   }
 
   protected get state(): Signal<T> {

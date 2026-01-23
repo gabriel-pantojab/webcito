@@ -14,6 +14,18 @@ export class EnrollmentState extends State<Enrollment> {
   readonly #CODES_KEY_NAME: Extract<keyof Enrollment, 'codes'> = 'codes';
   readonly #COURSES_KEY_NAME: Extract<keyof Enrollment, 'courses'> = 'courses';
 
+  constructor() {
+    super({
+      student: {
+        sis: '',
+        password: '',
+        birthday: '',
+      },
+      courses: [],
+      codes: [],
+    });
+  }
+
   public setStudent(student: Student): void {
     this.set(this.#STUDENT_KEY_NAME, student);
   }
