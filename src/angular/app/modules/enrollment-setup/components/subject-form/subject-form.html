@@ -1,0 +1,35 @@
+<form class="subject-form" [formGroup]="form">
+  <section class="subject-form__content">
+    <div class="subject-form__left-content">
+      <fieldset class="subject-form__field">
+        <legend>
+          <label for="">Codigo de la Materia</label>
+        </legend>
+        <input type="text" formControlName="code">
+      </fieldset>
+
+      <fieldset class="subject-form__field">
+        <legend>
+          <label for="">Modalidad</label>
+        </legend>
+
+        <input type="text" formControlName="type">
+      </fieldset>
+    </div>
+
+    <fieldset class="subject-form__field">
+      <legend>
+        <label for="">Grupo</label>
+      </legend>
+      <input type="text" formControlName="group">
+    </fieldset>
+  </section>
+
+  <div class="subject-form__actions">
+    <button [disabled]="form.invalid" (click)="handleAddSubject()">
+      agregar
+    </button>
+
+    <button [disabled]="!form.dirty" (click)="cancel()">cancelar</button>
+  </div>
+</form>

@@ -1,0 +1,31 @@
+<section class="subjects-form">
+  <subject-form (eventAddSubject)="addSubject($event)"></subject-form>
+
+  <section class="subjects-container">
+      <section class="subjects-header">
+          <h2>Materias</h2>
+      </section>
+
+      <section class="subjects-content">
+          <section class="subjects-list">
+              @for (subject of subjects(); track subject.code) {
+                  <section class="subject">
+                      <section class="subject-info">
+                          <p><strong>Codigo Materia:</strong> {{subject.code}}</p>
+
+                          <p><strong>Tipo:</strong> {{subject.type}}</p>
+
+                          <p><strong>Grupo:</strong> {{subject.group}}</p>
+                      </section>
+
+                      <section class="subject-actions">
+                          <button (click)="removeSubject(subject.code)">remover</button>
+                      </section>
+                  </section>
+              }@empty {
+                  <p>Agrega materias o Continua</p>
+              }
+          </section>
+      </section>
+  </section>
+</section>
