@@ -1,0 +1,29 @@
+.wizard {
+  position: relative;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.wizard__footer {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.wizard__button {
+  border: none;
+  padding: 1rem .5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  background-color: #c4c4c4;
+}
+
+.wizard__button:disabled {
+  cursor: not-allowed;
+}

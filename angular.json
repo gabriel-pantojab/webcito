@@ -7,12 +7,16 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src/angular",
-      "prefix": "gabther",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular/build:application",

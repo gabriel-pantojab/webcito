@@ -1,0 +1,33 @@
+<section>
+  <header>
+    <h2>Información Básica</h2>
+  </header>
+
+  <form [formGroup]="form()" class="form">
+    <section class="form-content">
+      <div class="form__field">
+        <label for="sis">
+          Código SIS
+        </label>
+
+        <input name="sis" type="text" formControlName="sis" />
+      </div>
+
+      <div class="form__field">
+        <label for="password">
+          Contraseña
+        </label>
+
+        <input name="password" type="text" formControlName="password" />
+      </div>
+
+      <div class="form__field">
+        <label for="birthdate">
+          Fecha de Nacimiento
+        </label>
+
+        <input name="birthdate" type="date" formControlName="birthdate" />
+      </div>
+    </section>
+  </form>
+</section>

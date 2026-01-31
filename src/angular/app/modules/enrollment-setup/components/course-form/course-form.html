@@ -1,0 +1,35 @@
+<form class="course-form" [formGroup]="form">
+  <section class="course-form__content">
+    <div class="course-form__left-content">
+      <fieldset class="course-form__field">
+        <legend>
+          <label for="">Codigo de la Materia</label>
+        </legend>
+        <input type="text" formControlName="code">
+      </fieldset>
+
+      <fieldset class="course-form__field">
+        <legend>
+          <label for="">Modalidad</label>
+        </legend>
+
+        <input type="text" formControlName="type">
+      </fieldset>
+    </div>
+
+    <fieldset class="course-form__field">
+      <legend>
+        <label for="">Grupo</label>
+      </legend>
+      <input type="text" formControlName="group">
+    </fieldset>
+  </section>
+
+  <div class="course-form__actions">
+    <button [disabled]="form.invalid" (click)="handleAddCourse()">
+      agregar
+    </button>
+
+    <button [disabled]="!form.dirty" (click)="cancel()">cancelar</button>
+  </div>
+</form>

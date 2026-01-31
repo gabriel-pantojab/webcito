@@ -198,6 +198,18 @@ module.exports = defineConfig([
               position: "before",
             },
 
+            // UseCases
+            {
+              pattern: "../../use-cases/**",
+              group: "parent",
+              position: "before",
+            },
+            {
+              pattern: "../use-cases/**",
+              group: "parent",
+              position: "before",
+            },
+
             // Models
             {
               pattern: "../../models/**",
@@ -206,6 +218,18 @@ module.exports = defineConfig([
             },
             {
               pattern: "../models/**",
+              group: "parent",
+              position: "before",
+            },
+
+            // Types
+            {
+              pattern: "../../types/**",
+              group: "parent",
+              position: "before",
+            },
+            {
+              pattern: "../types/**",
               group: "parent",
               position: "before",
             },

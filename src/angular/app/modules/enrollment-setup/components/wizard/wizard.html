@@ -1,0 +1,23 @@
+<section class="wizard">
+  @switch (currentStep()) {
+    @case (USER_INFO_STEP) {
+      <user-info-form [form]="form()"></user-info-form>
+    }
+    @case (CODES_STEP) {
+      <codes-form [form]="form()"></codes-form>
+    }
+    @case (COURSE_STEP) {
+      <courses-form [form]="form()"></courses-form>
+    }
+  }
+
+  <section class="wizard__footer">
+    @if (currentStep() < TOTAL_STEPS) {
+      <button class="wizard__button" [disabled]="!form().valid" (click)="nextStep()">Siguiente</button>
+    }@else {
+      <button class="wizard__button" (click)="continueProcess()">Comenzar</button>
+    }
+
+    <button class="wizard__button" [disabled]="currentStep() === 1" (click)="previousStep()">Atras</button>
+  </section>
+</section>
