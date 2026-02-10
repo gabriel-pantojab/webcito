@@ -1,8 +1,11 @@
 import {
   Component,
   inject,
+  input,
+  InputSignal,
   model,
   ModelSignal,
+  OnInit,
   signal,
   WritableSignal,
 } from '@angular/core';
@@ -15,7 +18,7 @@ import {
 
 import { Course } from '@core/models/course';
 
-import { CourseForm } from '@modules/enrollment-setup/components/course-form/course-form';
+import { CourseForm } from '../../components/course-form/course-form';
 
 @Component({
   selector: 'courses-form',
@@ -23,28 +26,40 @@ import { CourseForm } from '@modules/enrollment-setup/components/course-form/cou
   templateUrl: './courses-form.html',
   styleUrl: './courses-form.scss',
 })
-export class CoursesForm {
-  public form: ModelSignal<FormGroup> = model.required();
+export class CoursesForm implements OnInit {
+  initialCourses: InputSignal<Course[] | undefined> = input();
+  form: ModelSignal<FormGroup> = model.required();
 
   protected courses: WritableSignal<Course[]> = signal([]);
 
   #formBuilder: FormBuilder = inject(FormBuilder);
 
-  public addCourse(course: Course): void {
-    if (this.#alreadyCourseExist(course.code)) return;
-    this.courses.update((prev) => {
-      const courses: Course[] = [...prev, course];
-      this.#updateForm(courses);
-      return courses;
-    });
+  ngOnInit(): void {
+    this.#initialize();
   }
 
-  public removeCourse(code: string): void {
-    this.courses.update((prev) => {
-      const courses: Course[] = prev.filter((course) => course.code !== code);
-      this.#updateForm(courses);
-      return courses;
-    });
+  addCourse(course: Course): void {
+    if (this.#alreadyCourseExist(course.code)) return;
+    const courses: Course[] = [...this.courses(), course];
+    this.#updateCourses(courses);
+  }
+
+  removeCourse(code: string): void {
+    const courses: Course[] = this.courses().filter(
+      (course) => course.code !== code,
+    );
+    this.#updateCourses(courses);
+  }
+
+  #initialize(): void {
+    const courses: Course[] = [...(this.initialCourses() ?? [])];
+    this.courses.set(courses);
+    this.#updateForm(courses);
+  }
+
+  #updateCourses(courses: Course[]): void {
+    this.#updateForm(courses);
+    this.courses.set(courses);
   }
 
   #alreadyCourseExist(code: string): boolean {

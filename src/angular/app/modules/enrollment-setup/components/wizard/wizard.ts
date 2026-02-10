@@ -2,6 +2,8 @@ import {
   Component,
   computed,
   inject,
+  input,
+  InputSignal,
   output,
   OutputEmitterRef,
   Signal,
@@ -10,13 +12,17 @@ import {
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { Course } from '@core/models/course';
+import { Enrollment } from '@core/models/enrollment';
+
 import { CodesFormBuilder } from '../../use-cases/codes-form-builder';
 import { CoursesFormBuilder } from '../../use-cases/courses-form-builder';
 import { EnrollmentSetupFormBuilder } from '../../use-cases/enrollment-setup-form-builder';
 import { UserInfoFormBuilder } from '../../use-cases/user-info-form-builder';
 
-import { EnrollmentStep, UserInfoStep } from '../../types/enrollment-step';
+import { UserInfoStep } from '../../types/enrollment-step';
 import { EnrollmentStepType } from '../../types/enums/enrollment-step-type';
+import { StepSubmitEvent } from '../../types/step-submit-event';
 
 import { CodesForm } from '../codes-form/codes-form';
 import { CoursesForm } from '../courses-form/courses-form';
@@ -35,7 +41,8 @@ import { UserInfoForm } from '../user-info-form/user-info-form';
   styleUrl: './wizard.scss',
 })
 export class Wizard {
-  public eventSubmitStepData: OutputEmitterRef<EnrollmentStep> = output();
+  enrollment: InputSignal<Enrollment> = input.required();
+  eventSubmitStepData: OutputEmitterRef<StepSubmitEvent> = output();
 
   protected currentStep: WritableSignal<number> = signal(1);
   protected form: Signal<FormGroup> = computed((): FormGroup => {
@@ -53,41 +60,51 @@ export class Wizard {
 
   #formBuilder: EnrollmentSetupFormBuilder = inject(EnrollmentSetupFormBuilder);
 
-  public handleSubmitStepData(): void {
+  protected handleSubmitStepData(shouldFinish?: boolean): void {
     if (this.currentStep() === this.USER_INFO_STEP) {
       this.eventSubmitStepData.emit({
-        ...(this.form().value as UserInfoStep),
-        type: EnrollmentStepType.USER_INFO,
+        data: {
+          ...(this.form().value as UserInfoStep),
+          type: EnrollmentStepType.USER_INFO,
+        },
+        shouldFinish: !!shouldFinish,
       });
       return;
     }
 
     if (this.currentStep() === this.CODES_STEP) {
       this.eventSubmitStepData.emit({
-        type: EnrollmentStepType.CODES,
-        codes: Object.values(this.form().value),
+        data: {
+          type: EnrollmentStepType.CODES,
+          codes: Object.values(this.form().value),
+        },
+        shouldFinish: !!shouldFinish,
       });
       return;
     }
 
     this.eventSubmitStepData.emit({
-      type: EnrollmentStepType.COURSES,
-      courses: Object.values(this.form().value),
+      data: {
+        type: EnrollmentStepType.COURSES,
+        courses: [...(this.form().value.courses as Course[])],
+      },
+      shouldFinish: !!shouldFinish,
     });
   }
 
-  public nextStep(): void {
+  protected nextStep(): void {
     if (this.currentStep() === this.TOTAL_STEPS) return;
     this.handleSubmitStepData();
     this.currentStep.update((prev) => prev + 1);
   }
 
-  public previousStep(): void {
+  protected previousStep(): void {
     if (this.currentStep() === 1) return;
+    this.handleSubmitStepData();
     this.currentStep.update((prev) => prev - 1);
   }
 
-  public continueProcess(): void {
-    this.handleSubmitStepData();
+  protected continueProcess(): void {
+    this.handleSubmitStepData(true);
   }
 }
