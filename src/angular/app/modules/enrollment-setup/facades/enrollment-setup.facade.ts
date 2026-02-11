@@ -1,5 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, Signal } from '@angular/core';
 
+import { Enrollment } from '@core/models/enrollment';
 import { EnrollmentState } from '@core/state-management/enrollment-state';
 
 import { EnrollmentStep } from '../types/enrollment-step';
@@ -25,5 +26,9 @@ export class EnrollmentSetupFacade {
     }
 
     this.#store.setCourses(stepData.courses);
+  }
+
+  getEnrollment(): Signal<Enrollment> {
+    return this.#store.selectEnrollment();
   }
 }

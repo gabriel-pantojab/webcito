@@ -1,4 +1,4 @@
-import { Injectable, Signal } from '@angular/core';
+import { computed, Injectable, Signal } from '@angular/core';
 
 import { State } from '../services/state';
 
@@ -15,15 +15,7 @@ export class EnrollmentState extends State<Enrollment> {
   readonly #COURSES_KEY_NAME: Extract<keyof Enrollment, 'courses'> = 'courses';
 
   constructor() {
-    super({
-      student: {
-        sis: '',
-        password: '',
-        birthday: '',
-      },
-      courses: [],
-      codes: [],
-    });
+    super({} as Enrollment);
   }
 
   public setStudent(student: Student): void {
@@ -53,6 +45,14 @@ export class EnrollmentState extends State<Enrollment> {
 
   public selectCourses(): Signal<Course[]> {
     return this.select(this.#COURSES_KEY_NAME);
+  }
+
+  public selectEnrollment(): Signal<Enrollment> {
+    return computed(() => ({
+      student: this.selectStudent()(),
+      codes: this.selectCodes()(),
+      courses: this.selectCourses()(),
+    }));
   }
 
   public deleteCourse(code: string): void {
