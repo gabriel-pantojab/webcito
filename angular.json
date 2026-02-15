@@ -29,7 +29,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/angular/assets"
             ],
             "styles": [
               "src/angular/styles.scss"
