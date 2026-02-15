@@ -1,0 +1,28 @@
+.basic-information {
+  display: flex;
+  gap: 1rem;
+}
+
+.basic-information__student, .basic-information__codes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.basic-information__fields {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.basic-information__field {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.basic-information__code {
+  display: flex;
+  gap: .3rem;
+}
