@@ -1,0 +1,71 @@
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-image: url(/assets/images/background-home.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.content-wrapper {
+  text-align: center;
+  z-index: 1;
+  max-width: 600px;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 400;
+  margin: 0;
+  color: #E8E8F0;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 2rem;
+  color: #E8E8F0;
+  opacity: 0.9;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  margin: 0 0 2.5rem;
+  color: #E8E8F0;
+  font-weight: 300;
+}
+
+.cta-button {
+  background: #C5C5E8;
+  color: #0A0F3D;
+  border: none;
+  padding: 0.7rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.cta-button:hover {
+  background: #D0D0ED;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(197, 197, 232, 0.3);
+}
+
+.robot-illustration {
+  margin: 0 0 0 80px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/assets/images/robot-home.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
