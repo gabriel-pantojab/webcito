@@ -5,3 +5,20 @@
   gap: 1rem;
   padding: 1rem;
 }
+
+.enrollment-info__courses {
+  flex: 1;
+}
+
+.enrollment-info__footer {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    all: unset;
+    border: 2px solid black;
+    cursor: pointer;
+    border-radius: .7rem;
+    padding: .5rem;
+  }
+}

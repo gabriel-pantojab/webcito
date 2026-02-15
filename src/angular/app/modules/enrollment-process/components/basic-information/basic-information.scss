@@ -16,9 +16,16 @@
   gap: .5rem;
 }
 
+.basic-information__field-codes {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(3, auto);
+  gap: .5rem;
+}
+
 .basic-information__field {
   display: flex;
-  flex-direction: column;
   gap: .3rem;
 }
 

@@ -1,22 +1,22 @@
 <section class="basic-information">
   <section class="basic-information__student">
     <header class="basic-information__header">
-      <h2>Student Information</h2>
+      <h2>Estudiante</h2>
     </header>
 
     <section class="basic-information__fields">
       <div class="basic-information__field">
-        <h4>SIS</h4>
+        <h4>SIS:</h4>
         <p>{{student().sis}}</p>
       </div>
 
       <div class="basic-information__field">
-        <h4>Password</h4>
+        <h4>Contraseña:</h4>
         <p>{{student().password}}</p>
       </div>
 
       <div class="basic-information__field">
-        <h4>Birthday</h4>
+        <h4>Fecha de Nacimiento:</h4>
         <p>{{student().birthday}}</p>
       </div>
     </section>
@@ -24,13 +24,13 @@
 
   <section class="basic-information__codes">
     <header class="basic-information__header">
-      <h2>Codes</h2>
+      <h2>Códigos</h2>
     </header>
 
-    <section class="basic-information__fields">
+    <section class="basic-information__field-codes">
       @for (code of codes(); let idx = $index; track code) {
         <div class="basic-information__code">
-          <h4>Code {{idx + 1}}: </h4>
+          <h4>Código {{idx + 1}}: </h4>
 
           <p>{{code}}</p>
         </div>
