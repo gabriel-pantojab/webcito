@@ -7,8 +7,8 @@ import { BrowserConfig } from './config/browser-config';
 const DEV_ENV: string = 'development';
 const INDEX_PATH: string = '/dist-angular/browser/index.html';
 const FILE_URL: string = 'http://localhost:4200';
-const WIDTH: number = 800;
-const HEIGHT: number = 600;
+const WIDTH: number = 1128;
+const HEIGHT: number = 672;
 
 const browserConfig: BrowserConfig = BrowserConfig.getInstance();
 

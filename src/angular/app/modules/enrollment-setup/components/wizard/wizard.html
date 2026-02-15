@@ -12,12 +12,12 @@
   }
 
   <section class="wizard__footer">
+    <button class="wizard__button" [disabled]="currentStep() === 1" (click)="previousStep()">Atras</button>
+
     @if (currentStep() < TOTAL_STEPS) {
       <button class="wizard__button" [disabled]="!form().valid" (click)="nextStep()">Siguiente</button>
     }@else {
       <button class="wizard__button" (click)="continueProcess()">Comenzar</button>
     }
-
-    <button class="wizard__button" [disabled]="currentStep() === 1" (click)="previousStep()">Atras</button>
   </section>
 </section>
