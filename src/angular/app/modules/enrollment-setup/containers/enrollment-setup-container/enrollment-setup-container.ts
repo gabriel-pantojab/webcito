@@ -24,8 +24,7 @@ export class EnrollmentSetupContainer implements OnInit {
   );
   readonly #router: Router = inject(Router);
 
-  // todo: rename after defining the next page name
-  readonly #URL: string = '';
+  readonly #ENROLLMENT_PROCESS_URL: string = '/enrollment-process';
 
   ngOnInit(): void {
     this.#initialize();
@@ -37,7 +36,7 @@ export class EnrollmentSetupContainer implements OnInit {
     this.#enrollmentSetupFacade.saveStepInformation(stepEvent.data);
 
     if (stepEvent.shouldFinish) {
-      await this.#router.navigate([this.#URL]);
+      await this.#router.navigate([this.#ENROLLMENT_PROCESS_URL]);
     }
   }
 
