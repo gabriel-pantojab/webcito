@@ -18,7 +18,6 @@ import { Courses } from '../../components/courses/courses';
   selector: 'courses-container',
   imports: [Courses],
   templateUrl: './courses-container.html',
-  styleUrl: './courses-container.scss',
 })
 export class CoursesContainer implements OnInit {
   #enrollmentProcessFacade: EnrollmentProcessFacade = inject(
