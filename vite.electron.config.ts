@@ -5,8 +5,8 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'dist-electron',
     emptyOutDir: true,
-    minify: false,
-    sourcemap: true,
+    minify: true,
+    sourcemap: false,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/electron/main.ts'),

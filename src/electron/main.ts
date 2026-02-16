@@ -21,7 +21,7 @@ function createWindow(): void {
     },
   });
 
-  if (process.env.NODE_ENV === DEV_ENV) {
+  if (process.env['NODE_ENV'] === DEV_ENV) {
     browser.loadURL(FILE_URL).then();
   } else {
     browser.loadFile(join(app.getAppPath(), INDEX_PATH)).then();
