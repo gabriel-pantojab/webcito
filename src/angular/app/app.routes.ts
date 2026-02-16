@@ -14,4 +14,11 @@ export const routes: Routes = [
         (m) => m.EnrollmentSetupModule,
       ),
   },
+  {
+    path: 'enrollment-process',
+    loadChildren: () =>
+      import('./modules/enrollment-process/enrollment-process-module').then(
+        (m) => m.EnrollmentProcessModule,
+      ),
+  },
 ];

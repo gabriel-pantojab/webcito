@@ -16,6 +16,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
+import { CourseStatus } from '@core/enums/course-status';
 import { Course } from '@core/models/course';
 
 import { CourseForm } from '../../components/course-form/course-form';
@@ -40,7 +41,10 @@ export class CoursesForm implements OnInit {
 
   addCourse(course: Course): void {
     if (this.#alreadyCourseExist(course.code)) return;
-    const courses: Course[] = [...this.courses(), course];
+    const courses: Course[] = [
+      ...this.courses(),
+      { ...course, status: CourseStatus.PENDING },
+    ];
     this.#updateCourses(courses);
   }
 
