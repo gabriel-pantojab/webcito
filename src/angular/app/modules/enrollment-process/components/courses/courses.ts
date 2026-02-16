@@ -11,6 +11,5 @@ import { CourseCard } from '../course-card/course-card';
   imports: [CourseCard],
 })
 export class Courses {
-  processedCourses: InputSignal<Course[]> = input.required();
-  unprocessedCourses: InputSignal<Course[]> = input.required();
+  courses: InputSignal<Course[]> = input.required();
 }

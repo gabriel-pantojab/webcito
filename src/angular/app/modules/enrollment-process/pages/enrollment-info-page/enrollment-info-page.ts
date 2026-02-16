@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { CoursesContainer } from '../..//containers/courses-container/courses-container';
+import { CoursesDetailsContainer } from '@modules/enrollment-process/containers/courses-details-container/courses-details-container';
 import { BasicInformationContainer } from '../../containers/basic-information-container/basic-information-container';
 
 @Component({
   selector: 'enrollment-info-page',
-  imports: [BasicInformationContainer, CoursesContainer, RouterLink],
+  imports: [BasicInformationContainer, CoursesDetailsContainer, RouterLink],
   templateUrl: './enrollment-info-page.html',
   styleUrl: './enrollment-info-page.scss',
 })
