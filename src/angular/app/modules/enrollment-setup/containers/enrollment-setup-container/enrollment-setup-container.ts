@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 
 import { Enrollment } from '@core/models/enrollment';
 
-import { EnrollmentStep } from '../../types/enrollment-step';
+import { StepSubmitEvent } from '../../types/step-submit-event';
 
 import { EnrollmentSetupFacade } from '../../facades/enrollment-setup.facade';
 
 import { Wizard } from '../../components/wizard/wizard';
-import { StepSubmitEvent } from '@modules/enrollment-setup/types/step-submit-event';
 
 @Component({
   selector: 'enrollment-setup-container',

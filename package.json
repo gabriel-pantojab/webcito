@@ -18,17 +18,9 @@
     "ng": "ng",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
-  },
-  "prettier": {
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
   },
   "private": true,
   "dependencies": {
