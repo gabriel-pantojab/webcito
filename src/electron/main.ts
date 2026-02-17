@@ -8,7 +8,7 @@ const DEV_ENV: string = 'development';
 const INDEX_PATH: string = '/dist-angular/browser/index.html';
 const FILE_URL: string = 'http://localhost:4200';
 const WIDTH: number = 1128;
-const HEIGHT: number = 672;
+const HEIGHT: number = 700;
 
 const browserConfig: BrowserConfig = BrowserConfig.getInstance();
 

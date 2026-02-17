@@ -1,33 +1,105 @@
-<section>
-  <header>
-    <h2>Información Básica</h2>
-  </header>
+<div class="form-container">
+  <div class="left-panel"></div>
 
-  <form [formGroup]="form()" class="form">
-    <section class="form-content">
-      <div class="form__field">
-        <label for="sis">
-          Código SIS
-        </label>
-
-        <input name="sis" type="text" formControlName="sis" />
+  <form class="right-panel" [formGroup]="form()">
+    <div class="stepper">
+      <div class="step" [class.active]="CURRENT_STEP === 1">
+        <span class="step-number">1</span>
       </div>
 
-      <div class="form__field">
-        <label for="password">
-          Contraseña
-        </label>
-
-        <input name="password" type="text" formControlName="password" />
+      <div class="step" [class.active]="CURRENT_STEP === 2">
+        <span class="step-number">2</span>
       </div>
 
-      <div class="form__field">
-        <label for="birthdate">
-          Fecha de Nacimiento
-        </label>
+      <div class="step" [class.active]="CURRENT_STEP === 3">
+        <span class="step-number">3</span>
+      </div>
+    </div>
 
-        <input name="birthdate" type="date" formControlName="birthdate" />
+    <section class="form-section">
+      <h2 class="section-title">Informacion Basica:</h2>
+
+      <div  class="form">
+        <div class="form-field">
+          <input 
+            name="sis" 
+            type="text" 
+            formControlName="sis"
+            placeholder="Codigo sis"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-field password-field">
+          <input 
+            name="password" 
+            [type]="showPassword() ? 'text' : 'password'" 
+            formControlName="password"
+            placeholder="Contraseña"
+            class="form-input"
+          />
+
+          <button 
+            type="button" 
+            class="password-toggle"
+            (click)="togglePasswordVisibility()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 5C7 5 2.73 8.11 1 12.5 2.73 16.89 7 20 12 20s9.27-3.11 11-7.5C21.27 8.11 17 5 12 5z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="form-field birthdate-field">
+          <select class="form-select" formControlName="day">
+            <option value="">Día</option>
+
+            @for (day of [].constructor(31); track $index; let i = $index) {
+              <option [value]="i+1">
+                {{ i + 1 }}
+              </option>
+            }
+          </select>
+          
+          <select class="form-select" formControlName="month">
+            <option value="">Mes</option>
+
+            @for (month of MONTHS; track month.value) {
+              <option [value]="month.value">
+                {{ month.name }}
+              </option>
+            }
+          </select>
+
+          <select class="form-select" formControlName="year">
+            <option value="">Año</option>
+
+            @for (year of years; track year) {
+              <option [value]="year">
+                {{ year }}
+              </option>
+            }
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="codes-section">
+      <h3 class="codes-title">Codigos:</h3>
+
+      <div class="codes-form" formArrayName="codes">
+
+        @for (code of codesArray.controls; track $index; let i = $index) {
+          <div class="code-field" >
+            <input 
+              type="text" 
+              placeholder="★ ★ ★ ★ ★"
+              class="code-input"
+              [formControlName]="i"
+            />
+          </div>
+        }
       </div>
     </section>
   </form>
-</section>
+</div>
