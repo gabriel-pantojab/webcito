@@ -1,0 +1,17 @@
+<section class="courses">
+  <section class="unprocessed-courses">
+    <header class="title">
+      <h2>Materias</h2>
+    </header>
+
+    <courses [courses]="unprocessedCourses()"></courses>
+  </section>
+
+  <section class="processed-courses">
+    <header class="title">
+      <h2>Materias Inscritas</h2>
+    </header>
+
+    <courses [courses]="processedCourses()"></courses>
+  </section>
+</section>
