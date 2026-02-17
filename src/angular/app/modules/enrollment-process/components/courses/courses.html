@@ -1,25 +1,5 @@
 <section class="courses">
-  <section class="unprocessed-courses">
-    <header class="title">
-      <h2>Materias</h2>
-    </header>
-
-    <section>
-      @for (course of unprocessedCourses(); track course.code) {
-        <course-card [course]="course"></course-card>
-      }
-    </section>
-  </section>
-
-  <section class="unprocessed-courses">
-    <header class="title">
-      <h2>Materias Inscritas</h2>
-    </header>
-
-    <section>
-      @for (course of processedCourses(); track course.code) {
-        <course-card [course]="course"></course-card>
-      }
-    </section>
-  </section>
+  @for (course of courses(); track course.code) {
+    <course-card [course]="course"></course-card>
+  }
 </section>
