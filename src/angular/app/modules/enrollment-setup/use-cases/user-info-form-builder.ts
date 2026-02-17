@@ -13,7 +13,10 @@ export class UserInfoFormBuilder implements EnrollmentFormBuilderStrategy {
     return this.#formBuilder.group({
       sis: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      birthdate: ['', [Validators.required]],
+      day: ['', [Validators.required]],
+      month: ['', [Validators.required]],
+      year: ['', [Validators.required]],
+      codes: this.#formBuilder.array(Array.from({length: 5}, () => this.#formBuilder.control('', [Validators.required]))),
     });
   }
 }
