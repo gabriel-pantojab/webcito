@@ -59,7 +59,13 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "outputPath": "dist-angular"
+              "outputPath": "dist-angular",
+              "fileReplacements": [
+                {
+                  "replace": "src/angular/environments/environment.ts",
+                  "with": "src/angular/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
