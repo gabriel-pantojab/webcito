@@ -80,8 +80,4 @@ export class UserInfoForm implements OnInit {
       });
     }
   }
-
-  get codesArray(): FormArray {
-    return this.form().get('codes') as FormArray;
-  }
 }
