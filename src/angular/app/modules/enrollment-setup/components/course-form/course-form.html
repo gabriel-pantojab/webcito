@@ -1,35 +1,47 @@
 <form class="course-form" [formGroup]="form">
   <section class="course-form__content">
-    <div class="course-form__left-content">
-      <fieldset class="course-form__field">
-        <legend>
-          <label for="">Codigo de la Materia</label>
-        </legend>
-        <input type="text" formControlName="code" />
-      </fieldset>
+    <h2 class="section-title">Información de Materia:</h2>
 
-      <fieldset class="course-form__field">
-        <legend>
-          <label for="">Modalidad</label>
-        </legend>
+    <section class="course-form__content-fields">
+      <div class="form-field">
+        <input 
+          name="sis" 
+          type="text" 
+          formControlName="code"
+          placeholder="Código Materia"
+          class="form-input"
+        />
+      </div>
 
-        <input type="text" formControlName="type" />
-      </fieldset>
-    </div>
+      <div class="form-field">
+        <input 
+          name="sis" 
+          type="text" 
+          formControlName="type"
+          placeholder="Modalidad"
+          class="form-input"
+        />
+      </div>
 
-    <fieldset class="course-form__field">
-      <legend>
-        <label for="">Grupo</label>
-      </legend>
-      <input type="text" formControlName="group" />
-    </fieldset>
+      <div class="form-field">
+        <input 
+          name="sis" 
+          type="text" 
+          formControlName="group"
+          placeholder="Grupo"
+          class="form-input"
+        />
+      </div>
+    </section>
   </section>
 
   <div class="course-form__actions">
-    <button [disabled]="form.invalid" (click)="handleAddCourse()">
+    <button class="button-add" [disabled]="form.invalid" (click)="handleAddCourse()">
       agregar
     </button>
 
-    <button [disabled]="!form.dirty" (click)="cancel()">cancelar</button>
+    <button class="button-cancel" [disabled]="!form.dirty" (click)="cancel()">
+      cancelar
+    </button>
   </div>
 </form>

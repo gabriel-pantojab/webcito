@@ -17,7 +17,7 @@
     </div>
 
     <section class="form-section">
-      <h2 class="section-title">Informacion Basica:</h2>
+      <h2 class="section-title">Información Básica:</h2>
 
       <div class="form">
         <div class="form-field">
@@ -25,7 +25,7 @@
             name="sis"
             type="text"
             formControlName="sis"
-            placeholder="Codigo sis"
+            placeholder="Código SIS"
             class="form-input"
           />
         </div>
@@ -94,7 +94,7 @@
     </section>
 
     <section class="codes-section">
-      <h3 class="codes-title">Codigos:</h3>
+      <h3 class="codes-title">Códigos:</h3>
 
       <div class="codes-form" formArrayName="codes">
         @for (code of codesArray.controls; track $index; let i = $index) {

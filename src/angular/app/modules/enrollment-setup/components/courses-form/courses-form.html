@@ -1,31 +1,56 @@
-<section class="courses-form">
-  <course-form (eventAddCourse)="addCourse($event)"></course-form>
+<div class="form-container">
+    <div class="left-panel"></div>
 
-  <section class="courses-container">
-    <section class="courses-header">
-      <h2>Materias</h2>
-    </section>
+    <div class="right-panel">
+        <div class="stepper">
+            <div class="step" [class.active]="false">
+            <span class="step-number">1</span>
+            </div>
 
-    <section class="courses-content">
-      <section class="courses-list">
-        @for (course of courses(); track course.code) {
-          <section class="course">
-            <section class="course-info">
-              <p><strong>Codigo Materia:</strong> {{ course.code }}</p>
+            <div class="step" [class.active]="true">
+            <span class="step-number">2</span>
+            </div>
 
-              <p><strong>Tipo:</strong> {{ course.type }}</p>
+            <div class="step" [class.active]="false">
+            <span class="step-number">3</span>
+            </div>
+        </div>
 
-              <p><strong>Grupo:</strong> {{ course.group }}</p>
+        <section class="courses-form">
+            <course-form (eventAddCourse)="addCourse($event)"></course-form>
+
+            <section class="courses-container">
+                <section class="courses-header">
+                    <h2>Materias agregadas:</h2>
+                </section>
+
+                <section class="courses-content">
+                    <section class="courses-list">
+                    @for (course of courses(); track course.code) {
+                        <section class="course">
+                            <section class="course-info">
+                                <div class="info-card">
+                                <span class="label">Codigo Materia</span>
+                                <span class="value">{{course.code}}</span>
+                                </div>
+                                <div class="info-card">
+                                <span class="label">Tipo</span>
+                                <span class="value">{{course.type}}</span>
+                                </div>
+                                <div class="info-card">
+                                <span class="label">Grupo</span>
+                                <span class="value">{{course.group}}</span>
+                                </div>
+                            </section>
+
+                            <button class="close-btn" (click)="removeCourse(course.code)">✕</button>
+                        </section>
+                    }@empty {
+                        <p>Agrega materias o Continua</p>
+                    }
+                    </section>
+                </section>
             </section>
-
-            <section class="course-actions">
-              <button (click)="removeCourse(course.code)">remover</button>
-            </section>
-          </section>
-        } @empty {
-          <p>Agrega materias o Continua</p>
-        }
-      </section>
-    </section>
-  </section>
-</section>
+        </section>
+    </div>
+</div>
