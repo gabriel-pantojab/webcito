@@ -12,6 +12,6 @@ import { CoursesDetailsContainer } from '../../containers/courses-details-contai
 })
 export class EnrollmentInfoPage {
   protected readonly ENROLLMENT_SETUP_URL: string = '/enrollment-setup';
-  // todo: replace url
-  protected readonly ENROLLMENT_EXECUTE_URL: string = '/enrollment-setup';
+  protected readonly ENROLLMENT_EXECUTE_URL: string =
+    '/enrollment-process/execute';
 }
