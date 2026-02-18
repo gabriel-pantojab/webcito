@@ -24,13 +24,12 @@ import { UserInfoStep } from '../../types/enrollment-step';
 import { EnrollmentStepType } from '../../types/enums/enrollment-step-type';
 import { StepSubmitEvent } from '../../types/step-submit-event';
 
-import { CodesForm } from '../codes-form/codes-form';
 import { CoursesForm } from '../courses-form/courses-form';
 import { UserInfoForm } from '../user-info-form/user-info-form';
 
 @Component({
   selector: 'wizard',
-  imports: [UserInfoForm, CodesForm, CoursesForm],
+  imports: [UserInfoForm, CoursesForm],
   providers: [
     EnrollmentSetupFormBuilder,
     UserInfoFormBuilder,
@@ -48,15 +47,12 @@ export class Wizard {
   protected form: Signal<FormGroup> = computed((): FormGroup => {
     if (this.currentStep() === this.USER_INFO_STEP)
       return this.#formBuilder.invoke(EnrollmentStepType.USER_INFO);
-    if (this.currentStep() === this.CODES_STEP)
-      return this.#formBuilder.invoke(EnrollmentStepType.CODES);
     return this.#formBuilder.invoke(EnrollmentStepType.COURSES);
   });
 
   protected readonly USER_INFO_STEP: number = 1;
-  protected readonly CODES_STEP: number = 2;
-  protected readonly COURSE_STEP: number = 3;
-  protected readonly TOTAL_STEPS: number = 3;
+  protected readonly COURSE_STEP: number = 2;
+  protected readonly TOTAL_STEPS: number = 2;
 
   #formBuilder: EnrollmentSetupFormBuilder = inject(EnrollmentSetupFormBuilder);
 
@@ -66,17 +62,6 @@ export class Wizard {
         data: {
           ...(this.form().value as UserInfoStep),
           type: EnrollmentStepType.USER_INFO,
-        },
-        shouldFinish: !!shouldFinish,
-      });
-      return;
-    }
-
-    if (this.currentStep() === this.CODES_STEP) {
-      this.eventSubmitStepData.emit({
-        data: {
-          type: EnrollmentStepType.CODES,
-          codes: Object.values(this.form().value),
         },
         shouldFinish: !!shouldFinish,
       });

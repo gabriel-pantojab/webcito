@@ -1,10 +1,9 @@
 <section class="wizard">
   @switch (currentStep()) {
     @case (USER_INFO_STEP) {
-      <user-info-form [student]="enrollment().student" [form]="form()"></user-info-form>
-    }
-    @case (CODES_STEP) {
-      <codes-form [codes]="enrollment().codes" [form]="form()"></codes-form>
+      <user-info-form [student]="enrollment().student" 
+      [form]="form()" 
+      [codes]="enrollment().codes"></user-info-form>
     }
     @case (COURSE_STEP) {
       <courses-form [initialCourses]="enrollment().courses" [form]="form()"></courses-form>
