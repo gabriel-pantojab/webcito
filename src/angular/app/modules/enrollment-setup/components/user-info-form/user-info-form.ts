@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   input,
@@ -5,9 +6,10 @@ import {
   model,
   ModelSignal,
   OnInit,
+  signal,
+  WritableSignal,
 } from '@angular/core';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 import { Student } from '@core/models/student';
 
@@ -19,10 +21,15 @@ import { Student } from '@core/models/student';
 })
 export class UserInfoForm implements OnInit {
   codes: InputSignal<string[] | undefined> = input();
-  form: ModelSignal<FormGroup> = model.required();
-  showPassword: boolean = false;
   student: InputSignal<Student | undefined> = input();
-  months: {value: number, name: string}[] = [
+
+  form: ModelSignal<FormGroup> = model.required();
+
+  showPassword: WritableSignal<boolean> = signal(false);
+  years: number[] = [];
+
+  readonly CURRENT_STEP: number = 1;
+  readonly MONTHS: { value: number; name: string }[] = [
     { value: 1, name: 'Enero' },
     { value: 2, name: 'Febrero' },
     { value: 3, name: 'Marzo' },
@@ -34,18 +41,28 @@ export class UserInfoForm implements OnInit {
     { value: 9, name: 'Septiembre' },
     { value: 10, name: 'Octubre' },
     { value: 11, name: 'Noviembre' },
-    { value: 12, name: 'Diciembre' }
+    { value: 12, name: 'Diciembre' },
   ];
-  years: number[] = [];
-  
-  readonly CURRENT_STEP: number = 1;
 
   ngOnInit(): void {
     this.#initialize();
   }
 
+  get codesArray(): FormArray {
+    return this.form().get('codes') as FormArray;
+  }
+
   togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
+    this.showPassword.update((value) => !value);
+  }
+
+  generateYears(): void {
+    const currentYear: number = new Date().getFullYear();
+    const maxYear: number = currentYear - 15;
+
+    for (let year: number = maxYear; year >= 1920; year--) {
+      this.years.push(year);
+    }
   }
 
   #initialize(): void {
@@ -59,17 +76,8 @@ export class UserInfoForm implements OnInit {
         day: '',
         month: '',
         year: '',
-        codes: Array.from({length: 5}, (_, i) =>  codes[i] || ''),
+        codes: Array.from({ length: 5 }, (_, i) => codes[i] || ''),
       });
-    }
-  }
-
-  generateYears(): void {
-    const currentYear = new Date().getFullYear();
-    const maxYear = currentYear - 15;
-    
-    for (let year = maxYear; year >= 1920; year--) {
-      this.years.push(year);
     }
   }
 

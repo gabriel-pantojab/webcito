@@ -33,7 +33,7 @@
         <div class="form-field password-field">
           <input 
             name="password" 
-            [type]="showPassword ? 'text' : 'password'" 
+            [type]="showPassword() ? 'text' : 'password'" 
             formControlName="password"
             placeholder="Contraseña"
             class="form-input"
@@ -54,25 +54,31 @@
           <select class="form-select" formControlName="day">
             <option value="">Día</option>
 
-            <option *ngFor="let day of [].constructor(31); let i = index" [value]="i+1">
-              {{ i + 1 }}
-            </option>
+            @for (day of [].constructor(31); track $index; let i = $index) {
+              <option [value]="i+1">
+                {{ i + 1 }}
+              </option>
+            }
           </select>
           
           <select class="form-select" formControlName="month">
             <option value="">Mes</option>
 
-            <option *ngFor="let month of months" [value]="month.value">
-              {{ month.name }}
-            </option>
+            @for (month of MONTHS; track month.value) {
+              <option [value]="month.value">
+                {{ month.name }}
+              </option>
+            }
           </select>
 
           <select class="form-select" formControlName="year">
             <option value="">Año</option>
 
-            <option *ngFor="let year of years" [value]="year">
-              {{ year }}
-            </option>
+            @for (year of years; track year) {
+              <option [value]="year">
+                {{ year }}
+              </option>
+            }
           </select>
         </div>
       </div>
