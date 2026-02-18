@@ -107,4 +107,61 @@ export class Browser {
     }
     await locator.click();
   }
+
+  public disableElement(pageName: string, selector: string): Promise<void> {
+    return this.#setDisabledElement(pageName, selector, true);
+  }
+
+  public enableElement(pageName: string, selector: string): Promise<void> {
+    return this.#setDisabledElement(pageName, selector, false);
+  }
+
+  public async isDisabledElement(
+    pageName: string,
+    selector: string,
+  ): Promise<boolean> {
+    const locator: Locator | null = await this.findElement(pageName, selector);
+    if (!locator) {
+      throw new Error(`Element not found: ${selector}`);
+    }
+
+    return await locator.evaluate((element) => {
+      if (element instanceof SVGElement) {
+        return false;
+      }
+
+      if (
+        element instanceof HTMLInputElement ||
+        element instanceof HTMLButtonElement
+      ) {
+        return element.disabled;
+      }
+
+      return false;
+    });
+  }
+
+  async #setDisabledElement(
+    pageName: string,
+    selector: string,
+    disabled: boolean,
+  ): Promise<void> {
+    const locator: Locator | null = await this.findElement(pageName, selector);
+    if (!locator) {
+      throw new Error(`Element not found: ${selector}`);
+    }
+
+    await locator.evaluate((element, disabled) => {
+      if (element instanceof SVGElement) {
+        return;
+      }
+
+      if (
+        element instanceof HTMLInputElement ||
+        element instanceof HTMLButtonElement
+      ) {
+        element.disabled = disabled;
+      }
+    }, disabled);
+  }
 }

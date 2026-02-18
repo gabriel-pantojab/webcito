@@ -56,6 +56,21 @@ export class BrowserConfig {
       (_: IpcMainInvokeEvent, pageId: string, selector: string) =>
         this.#browser.clickElement(pageId, selector),
     );
+    ipcMain.handle(
+      BrowserActions.ENABLE_ELEMENT,
+      (_: IpcMainInvokeEvent, pageId: string, selector: string) =>
+        this.#browser.enableElement(pageId, selector),
+    );
+    ipcMain.handle(
+      BrowserActions.DISABLE_ELEMENT,
+      (_: IpcMainInvokeEvent, pageId: string, selector: string) =>
+        this.#browser.disableElement(pageId, selector),
+    );
+    ipcMain.handle(
+      BrowserActions.IS_DISABLED,
+      (_: IpcMainInvokeEvent, pageId: string, selector: string) =>
+        this.#browser.isDisabledElement(pageId, selector),
+    );
     this.#handlersRegistered = true;
   }
 }
