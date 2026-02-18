@@ -1,0 +1,16 @@
+.vscode
+.github/**
+
+package-lock.json
+package.json
+angular.json
+CHANGELOG.md
+README.md
+electron-builder.json
+eslint.config.js
+tsconfig.json
+tsconfig.*.json
+vite.electron.config.ts
+node_modules
+.prettier*
+dist

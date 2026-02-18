@@ -19,11 +19,11 @@
     <section class="form-section">
       <h2 class="section-title">Informacion Basica:</h2>
 
-      <div  class="form">
+      <div class="form">
         <div class="form-field">
-          <input 
-            name="sis" 
-            type="text" 
+          <input
+            name="sis"
+            type="text"
             formControlName="sis"
             placeholder="Codigo sis"
             class="form-input"
@@ -31,21 +31,30 @@
         </div>
 
         <div class="form-field password-field">
-          <input 
-            name="password" 
-            [type]="showPassword() ? 'text' : 'password'" 
+          <input
+            name="password"
+            [type]="showPassword() ? 'text' : 'password'"
             formControlName="password"
             placeholder="Contraseña"
             class="form-input"
           />
 
-          <button 
-            type="button" 
+          <button
+            type="button"
             class="password-toggle"
-            (click)="togglePasswordVisibility()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M12 5C7 5 2.73 8.11 1 12.5 2.73 16.89 7 20 12 20s9.27-3.11 11-7.5C21.27 8.11 17 5 12 5z"/>
-              <circle cx="12" cy="12" r="3"/>
+            (click)="togglePasswordVisibility()"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M12 5C7 5 2.73 8.11 1 12.5 2.73 16.89 7 20 12 20s9.27-3.11 11-7.5C21.27 8.11 17 5 12 5z"
+              />
+              <circle cx="12" cy="12" r="3" />
             </svg>
           </button>
         </div>
@@ -55,12 +64,12 @@
             <option value="">Día</option>
 
             @for (day of [].constructor(31); track $index; let i = $index) {
-              <option [value]="i+1">
+              <option [value]="i + 1">
                 {{ i + 1 }}
               </option>
             }
           </select>
-          
+
           <select class="form-select" formControlName="month">
             <option value="">Mes</option>
 
@@ -88,11 +97,10 @@
       <h3 class="codes-title">Codigos:</h3>
 
       <div class="codes-form" formArrayName="codes">
-
         @for (code of codesArray.controls; track $index; let i = $index) {
-          <div class="code-field" >
-            <input 
-              type="text" 
+          <div class="code-field">
+            <input
+              type="text"
               placeholder="★ ★ ★ ★ ★"
               class="code-input"
               [formControlName]="i"

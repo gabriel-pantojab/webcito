@@ -2,30 +2,30 @@
   <course-form (eventAddCourse)="addCourse($event)"></course-form>
 
   <section class="courses-container">
-      <section class="courses-header">
-          <h2>Materias</h2>
-      </section>
+    <section class="courses-header">
+      <h2>Materias</h2>
+    </section>
 
-      <section class="courses-content">
-          <section class="courses-list">
-              @for (course of courses(); track course.code) {
-                  <section class="course">
-                      <section class="course-info">
-                          <p><strong>Codigo Materia:</strong> {{course.code}}</p>
+    <section class="courses-content">
+      <section class="courses-list">
+        @for (course of courses(); track course.code) {
+          <section class="course">
+            <section class="course-info">
+              <p><strong>Codigo Materia:</strong> {{ course.code }}</p>
 
-                          <p><strong>Tipo:</strong> {{course.type}}</p>
+              <p><strong>Tipo:</strong> {{ course.type }}</p>
 
-                          <p><strong>Grupo:</strong> {{course.group}}</p>
-                      </section>
+              <p><strong>Grupo:</strong> {{ course.group }}</p>
+            </section>
 
-                      <section class="course-actions">
-                          <button (click)="removeCourse(course.code)">remover</button>
-                      </section>
-                  </section>
-              }@empty {
-                  <p>Agrega materias o Continua</p>
-              }
+            <section class="course-actions">
+              <button (click)="removeCourse(course.code)">remover</button>
+            </section>
           </section>
+        } @empty {
+          <p>Agrega materias o Continua</p>
+        }
       </section>
+    </section>
   </section>
 </section>

@@ -7,17 +7,17 @@
     <section class="basic-information__fields">
       <div class="basic-information__field">
         <h4>SIS:</h4>
-        <p>{{student().sis}}</p>
+        <p>{{ student().sis }}</p>
       </div>
 
       <div class="basic-information__field">
         <h4>Contraseña:</h4>
-        <p>{{student().password}}</p>
+        <p>{{ student().password }}</p>
       </div>
 
       <div class="basic-information__field">
         <h4>Fecha de Nacimiento:</h4>
-        <p>{{student().birthday}}</p>
+        <p>{{ student().birthday }}</p>
       </div>
     </section>
   </section>
@@ -30,9 +30,9 @@
     <section class="basic-information__field-codes">
       @for (code of codes(); let idx = $index; track code) {
         <div class="basic-information__code">
-          <h4>Código {{idx + 1}}: </h4>
+          <h4>Código {{ idx + 1 }}:</h4>
 
-          <p>{{code}}</p>
+          <p>{{ code }}</p>
         </div>
       }
     </section>

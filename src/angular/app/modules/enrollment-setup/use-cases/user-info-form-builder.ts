@@ -16,7 +16,11 @@ export class UserInfoFormBuilder implements EnrollmentFormBuilderStrategy {
       day: ['', [Validators.required]],
       month: ['', [Validators.required]],
       year: ['', [Validators.required]],
-      codes: this.#formBuilder.array(Array.from({length: 5}, () => this.#formBuilder.control('', [Validators.required]))),
+      codes: this.#formBuilder.array(
+        Array.from({ length: 5 }, () =>
+          this.#formBuilder.control('', [Validators.required]),
+        ),
+      ),
     });
   }
 }
