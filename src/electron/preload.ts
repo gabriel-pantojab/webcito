@@ -10,6 +10,24 @@ enum BrowserActions {
   IS_DISABLED = 'IS_DISABLED',
 }
 
+enum EnrollmentEvents {
+  OPEN_WEBSIS = 'OPEN_WEBSIS',
+  LOGIN = 'LOGIN',
+}
+
+interface LoginRequest {
+  sis: string;
+  password: string;
+  birthday: Birthday;
+  captcha: string;
+}
+
+interface Birthday {
+  day: number;
+  month: number;
+  year: number;
+}
+
 function preload(): void {
   contextBridge.exposeInMainWorld('electronAPI', {
     browser: {
@@ -27,6 +45,11 @@ function preload(): void {
         ipcRenderer.invoke(BrowserActions.DISABLE_ELEMENT, pageId, selector),
       isDisabledElement: (pageId: string, selector: string) =>
         ipcRenderer.invoke(BrowserActions.IS_DISABLED, pageId, selector),
+    },
+    websis: {
+      open: () => ipcRenderer.invoke(EnrollmentEvents.OPEN_WEBSIS),
+      login: (data: LoginRequest) =>
+        ipcRenderer.invoke(EnrollmentEvents.LOGIN, data),
     },
   });
 }

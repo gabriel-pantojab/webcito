@@ -3,6 +3,7 @@ import { join } from 'path';
 import { app, BrowserWindow } from 'electron';
 
 import { BrowserConfig } from './config/browser-config';
+import { EnrollmentAutomationConfig } from './config/enrollment-automation-config';
 
 const DEV_ENV: string = 'development';
 const INDEX_PATH: string = '/dist-angular/browser/index.html';
@@ -11,6 +12,8 @@ const WIDTH: number = 1128;
 const HEIGHT: number = 700;
 
 const browserConfig: BrowserConfig = BrowserConfig.getInstance();
+const enrollmentConfig: EnrollmentAutomationConfig =
+  EnrollmentAutomationConfig.getInstance();
 
 function createWindow(): void {
   const browser: BrowserWindow = new BrowserWindow({
@@ -31,6 +34,7 @@ function createWindow(): void {
 app.whenReady().then(() => {
   createWindow();
   browserConfig.registerBrowserActions();
+  enrollmentConfig.registerEnrollmentEvents();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

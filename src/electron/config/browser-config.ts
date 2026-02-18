@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron';
 
 import { Browser } from '../browser/browser';
-import { BrowserActions } from '../types/browser-actions';
+import { BrowserActions } from '../types/enums/browser-actions';
 
 import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 
