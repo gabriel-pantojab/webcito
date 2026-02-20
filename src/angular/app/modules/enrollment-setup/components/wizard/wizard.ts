@@ -20,7 +20,7 @@ import { CoursesFormBuilder } from '../../use-cases/courses-form-builder';
 import { EnrollmentSetupFormBuilder } from '../../use-cases/enrollment-setup-form-builder';
 import { UserInfoFormBuilder } from '../../use-cases/user-info-form-builder';
 
-import { UserInfoStep } from '../../types/enrollment-step';
+import { BasicInfoStep } from '../../types/enrollment-step';
 import { EnrollmentStepType } from '../../types/enums/enrollment-step-type';
 import { StepSubmitEvent } from '../../types/step-submit-event';
 
@@ -46,7 +46,7 @@ export class Wizard {
   protected currentStep: WritableSignal<number> = signal(1);
   protected form: Signal<FormGroup> = computed((): FormGroup => {
     if (this.currentStep() === this.USER_INFO_STEP)
-      return this.#formBuilder.invoke(EnrollmentStepType.USER_INFO);
+      return this.#formBuilder.invoke(EnrollmentStepType.BASIC_INFO);
     return this.#formBuilder.invoke(EnrollmentStepType.COURSES);
   });
 
@@ -60,8 +60,8 @@ export class Wizard {
     if (this.currentStep() === this.USER_INFO_STEP) {
       this.eventSubmitStepData.emit({
         data: {
-          ...(this.form().value as UserInfoStep),
-          type: EnrollmentStepType.USER_INFO,
+          ...(this.form().value as BasicInfoStep),
+          type: EnrollmentStepType.BASIC_INFO,
         },
         shouldFinish: !!shouldFinish,
       });

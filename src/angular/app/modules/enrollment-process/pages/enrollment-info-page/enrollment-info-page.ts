@@ -11,7 +11,7 @@ import { CoursesDetailsContainer } from '../../containers/courses-details-contai
   styleUrl: './enrollment-info-page.scss',
 })
 export class EnrollmentInfoPage {
-  protected readonly ENROLLMENT_SETUP_URL: string = '/enrollment-setup';
+  protected readonly ENROLLMENT_SETUP_URL: string = '/enrollment-setup/courses';
   protected readonly ENROLLMENT_EXECUTE_URL: string =
     '/enrollment-process/execute';
 }

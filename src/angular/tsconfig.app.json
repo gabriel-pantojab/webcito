@@ -7,7 +7,7 @@
     "types": [],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["*"],
+      "@/*": ["app/*"],
       "@core/*": ["app/core/*"],
       "@modules/*": ["app/modules/*"]
     }
