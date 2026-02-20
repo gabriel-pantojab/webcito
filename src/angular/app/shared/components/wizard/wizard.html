@@ -1,0 +1,45 @@
+<section class="wizard">
+  <section class="wizard-body">
+    <section class="left-panel"></section>
+
+    <section class="right-panel">
+      <section class="stepper">
+        @for (step of steps(); track step.step) {
+          <a
+            class="step"
+            [class.active]="step.step <= currentStep()"
+            [routerLink]="step.path"
+          >
+            <span class="step-number">{{ step.step }}</span>
+          </a>
+        }
+      </section>
+
+      <section class="wizard-content">
+        <ng-content></ng-content>
+      </section>
+    </section>
+
+    <section class="wizard__footer">
+      <button class="wizard__button" (click)="previous.emit()">Atras</button>
+
+      @if (currentStep() < steps().length) {
+        <button
+          class="wizard__button"
+          [disabled]="disabledNext()"
+          (click)="next.emit()"
+        >
+          Siguiente
+        </button>
+      } @else {
+        <button
+          class="wizard__button"
+          [disabled]="disabledNext()"
+          (click)="next.emit()"
+        >
+          Comenzar
+        </button>
+      }
+    </section>
+  </section>
+</section>

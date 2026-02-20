@@ -1,0 +1,114 @@
+.wizard {
+  align-items: center;
+  background-image: url(/assets/images/background-wizard.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  min-height: 100vh;
+  // height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.wizard-body {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  width: 100%;
+  flex: 1;
+  margin-inline: 3rem;
+}
+
+.left-panel {
+  align-items: center;
+  background-image: url(/assets/images/robot-wizard.png);
+  background-position: center;
+  background-size: cover;
+  border-radius: 2rem 0 0 2rem;
+  display: flex;
+  flex: 0 0 33%;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.right-panel {
+  background: rgba(232, 232, 240, 0.95);
+  background-image: url(/assets/images/background-form.png);
+  background-position: center;
+  background-size: cover;
+  border-radius: 0 2rem 2rem 0;
+  flex: 1;
+  height: 100%;
+  padding: 1rem 4rem 3rem 4rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.stepper {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  a {
+    all: unset;
+    cursor: pointer;
+  }
+}
+
+.step {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.step-number {
+  align-items: center;
+  background: #c5c5e8;
+  border-radius: 50%;
+  color: #0a0f3d;
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 600;
+  height: 40px;
+  justify-content: center;
+  transition: all 0.3s ease;
+  width: 40px;
+}
+
+.active .step-number {
+  background: #6366f1;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  color: white;
+}
+
+.wizard-content {
+  flex: 1;
+  min-height: 0;
+}
+
+.wizard__footer {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 1.5rem;
+}
+
+.wizard__button {
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #c8cef0;
+  color: #141862;
+}
+
+.wizard__button:disabled {
+  cursor: not-allowed;
+  color: rgb(163, 163, 163);
+}
