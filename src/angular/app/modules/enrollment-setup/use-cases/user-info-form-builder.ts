@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { EnrollmentFormBuilderStrategy } from '../types/enrollment-form-builder-strategy';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UserInfoFormBuilder implements EnrollmentFormBuilderStrategy {
   #formBuilder: FormBuilder = inject(FormBuilder);
 
