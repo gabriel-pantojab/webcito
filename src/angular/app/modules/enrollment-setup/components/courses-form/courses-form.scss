@@ -1,80 +1,8 @@
-.form-container {
-  align-items: center;
-  background-image: url(/assets/images/background-wizard.png);
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  min-height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.left-panel {
-  align-items: center;
-  background-image: url(/assets/images/robot-wizard.png);
-  background-position: center;
-  background-size: cover;
-  border-radius: 2rem 0 0 2rem;
-  display: flex;
-  flex: 0 0 33%;
-  flex-direction: column;
-  height: 85vh;
-  justify-content: space-between;
-  margin: 2rem;
-  margin-right: 0;
-  position: relative;
-}
-
-.right-panel {
-  background: rgba(232, 232, 240, 0.95);
-  background-image: url(/assets/images/background-form.png);
-  background-position: center;
-  background-size: cover;
-  border-radius: 0 2rem 2rem 0;
-  flex: 0 0 61%;
-  height: 85vh;
-  overflow-y: auto;
-  padding: 1rem 4rem;
-  position: relative;
-}
-
-.stepper {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.step {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.step-number {
-  align-items: center;
-  background: #c5c5e8;
-  border-radius: 50%;
-  color: #0a0f3d;
-  display: flex;
-  font-size: 1.1rem;
-  font-weight: 600;
-  height: 40px;
-  justify-content: center;
-  transition: all 0.3s ease;
-  width: 40px;
-}
-
-.step.active .step-number {
-  background: #6366f1;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-  color: white;
-}
-
 .courses-form {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
 }
 
 .courses-container {
@@ -83,14 +11,7 @@
   gap: 1rem;
   height: 100%;
   padding-bottom: 1rem;
-}
-
-.courses-list {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  scrollbar-color: gray transparent;
-  scrollbar-width: thin;
+  min-height: 0;
 }
 
 .course {
@@ -98,7 +19,7 @@
   align-items: center;
   background-color: #c5cae9;
   border-radius: 20px;
-  padding: 16px 20px;
+  padding: 10px 15px;
   position: relative;
   gap: 12px;
 }
@@ -116,7 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   flex: 1;
 }
 
@@ -150,4 +71,22 @@
 
 .close-btn:hover {
   background-color: #333;
+}
+
+.courses-content {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: visible;
+  height: 100%;
+  scrollbar-width: none;
+}
+
+.courses-list {
+  position: absolute;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

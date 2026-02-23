@@ -6,7 +6,6 @@ import { UseCase } from '@core/interfaces/use-case';
 import { EnrollmentFormBuilderStrategy } from '../types/enrollment-form-builder-strategy';
 import { EnrollmentStepType } from '../types/enums/enrollment-step-type';
 
-import { CodesFormBuilder } from './codes-form-builder';
 import { CoursesFormBuilder } from './courses-form-builder';
 import { UserInfoFormBuilder } from './user-info-form-builder';
 
@@ -16,7 +15,6 @@ export class EnrollmentSetupFormBuilder implements UseCase<
   FormGroup
 > {
   #userInfoBuilder: UserInfoFormBuilder = inject(UserInfoFormBuilder);
-  #codesBuilder: CodesFormBuilder = inject(CodesFormBuilder);
   #coursesBuilder: CoursesFormBuilder = inject(CoursesFormBuilder);
 
   public invoke(args: EnrollmentStepType): FormGroup {
@@ -25,8 +23,7 @@ export class EnrollmentSetupFormBuilder implements UseCase<
   }
 
   #getBuilder(type: EnrollmentStepType): EnrollmentFormBuilderStrategy {
-    if (type === EnrollmentStepType.USER_INFO) return this.#userInfoBuilder;
-    if (type === EnrollmentStepType.CODES) return this.#codesBuilder;
+    if (type === EnrollmentStepType.BASIC_INFO) return this.#userInfoBuilder;
     return this.#coursesBuilder;
   }
 }

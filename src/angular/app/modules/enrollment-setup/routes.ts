@@ -1,10 +1,20 @@
 import { Routes } from '@angular/router';
 
-import { EnrollmentSetupPage } from './pages/enrollment-setup-page/enrollment-setup-page';
+import { BasicInfoStepPage } from './pages/basic-info-step-page/basic-info-step-page';
+import { CoursesStepPage } from './pages/courses-step-page/courses-step-page';
 
 export const routes: Routes = [
   {
     path: '',
-    component: EnrollmentSetupPage,
+    pathMatch: 'full',
+    redirectTo: 'basic-info',
+  },
+  {
+    path: 'basic-info',
+    component: BasicInfoStepPage,
+  },
+  {
+    path: 'courses',
+    component: CoursesStepPage,
   },
 ];

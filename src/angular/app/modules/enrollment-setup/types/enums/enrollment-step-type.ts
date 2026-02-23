@@ -1,5 +1,4 @@
 export enum EnrollmentStepType {
-  USER_INFO = 'USER_INFO',
-  CODES = 'CODES',
+  BASIC_INFO = 'BASIC_INFO',
   COURSES = 'COURSES',
 }

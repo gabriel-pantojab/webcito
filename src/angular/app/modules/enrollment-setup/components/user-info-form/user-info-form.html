@@ -1,21 +1,11 @@
-<div class="form-container">
-  <div class="left-panel"></div>
-
-  <form class="right-panel" [formGroup]="form()">
-    <div class="stepper">
-      <div class="step" [class.active]="CURRENT_STEP === 1">
-        <span class="step-number">1</span>
-      </div>
-
-      <div class="step" [class.active]="CURRENT_STEP === 2">
-        <span class="step-number">2</span>
-      </div>
-
-      <div class="step" [class.active]="CURRENT_STEP === 3">
-        <span class="step-number">3</span>
-      </div>
-    </div>
-
+<wizard
+  [steps]="STEPS"
+  [currentStep]="CURRENT_STEP"
+  [disabledNext]="!form().valid"
+  (next)="handleSubmitData()"
+  (previous)="goBack.emit()"
+>
+  <form [formGroup]="form()" class="form">
     <section class="form-section">
       <h2 class="section-title">Información Básica:</h2>
 
@@ -83,7 +73,7 @@
           <select class="form-select" formControlName="year">
             <option value="">Año</option>
 
-            @for (year of years; track year) {
+            @for (year of years(); track year) {
               <option [value]="year">
                 {{ year }}
               </option>
@@ -110,4 +100,4 @@
       </div>
     </section>
   </form>
-</div>
+</wizard>

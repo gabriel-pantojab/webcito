@@ -1,4 +1,5 @@
 import { Course } from '@core/models/course';
+import { Birthday } from '@core/models/student';
 
 import { EnrollmentStepType } from './enums/enrollment-step-type';
 
@@ -6,15 +7,11 @@ interface BaseEnrollmentStep {
   type: EnrollmentStepType;
 }
 
-export interface UserInfoStep extends BaseEnrollmentStep {
-  type: EnrollmentStepType.USER_INFO;
+export interface BasicInfoStep extends BaseEnrollmentStep {
+  type: EnrollmentStepType.BASIC_INFO;
   sis: string;
   password: string;
-  birthdate: string;
-}
-
-export interface CodesStep extends BaseEnrollmentStep {
-  type: EnrollmentStepType.CODES;
+  birthdate: Birthday;
   codes: string[];
 }
 
@@ -23,4 +20,4 @@ export interface CoursesStep extends BaseEnrollmentStep {
   courses: Course[];
 }
 
-export type EnrollmentStep = UserInfoStep | CodesStep | CoursesStep;
+export type EnrollmentStep = BasicInfoStep | CoursesStep;
